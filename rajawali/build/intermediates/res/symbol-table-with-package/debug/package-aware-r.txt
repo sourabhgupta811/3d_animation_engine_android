@@ -1,0 +1,31 @@
+org.rajawali3d
+attr antiAliasingType
+attr bitsAlpha
+attr bitsBlue
+attr bitsDepth
+attr bitsGreen
+attr bitsRed
+attr frameRate
+attr isTransparent
+attr multiSampleCount
+attr renderMode
+id RENDER_CONTINUOUS
+id RENDER_WHEN_DIRTY
+id coverage
+id multisample
+raw blend_add_fragment_shader
+raw blend_screen_fragment_shader
+raw blend_subtract_fragment_shader
+raw blur_fragment_shader
+raw color_threshold_shader
+raw copy_fragment_shader
+raw fog_fragment_shader
+raw fxaa_fragment_shader
+raw fxaa_vertex_shader
+raw grey_scale_fragment_shader
+raw minimal_vertex_shader
+raw scanline_fragment_shader
+raw sepia_fragment_shader
+raw vignette_fragment_shader
+styleable SurfaceView antiAliasingType bitsAlpha bitsBlue bitsDepth bitsGreen bitsRed frameRate isTransparent multiSampleCount renderMode
+styleable TextureView antiAliasingType bitsAlpha bitsBlue bitsDepth bitsGreen bitsRed frameRate multiSampleCount renderMode
