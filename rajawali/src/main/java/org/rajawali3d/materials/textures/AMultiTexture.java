@@ -18,6 +18,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import org.rajawali3d.materials.RajawaliContext;
+
 
 public abstract class AMultiTexture extends ATexture {
 	protected Bitmap[] mBitmaps;
@@ -80,7 +82,7 @@ public abstract class AMultiTexture extends ATexture {
 		mResourceIds = resourceIds;
 		int numResources = resourceIds.length;
 		mBitmaps = new Bitmap[numResources];
-		Context context = TextureManager.getInstance().getContext();
+		Context context = RajawaliContext.getInstance().getContext();
 
 		for(int i=0; i<numResources; i++)
 		{

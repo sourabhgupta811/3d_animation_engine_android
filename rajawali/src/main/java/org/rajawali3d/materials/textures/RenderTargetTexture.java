@@ -14,6 +14,8 @@ package org.rajawali3d.materials.textures;
 
 import android.opengl.GLES20;
 
+import org.rajawali3d.renderer.Renderer;
+
 public class RenderTargetTexture extends ATexture {
 
     public enum RenderTargetTextureFormat {
@@ -73,6 +75,11 @@ public class RenderTargetTexture extends ATexture {
         mWidth = width;
         mHeight = height;
     }
+    private Renderer renderer;
+
+    public void setRenderer(Renderer renderer) {
+        this.renderer = renderer;
+    }
 
     @Override
     public RenderTargetTexture clone() {
@@ -81,12 +88,12 @@ public class RenderTargetTexture extends ATexture {
 
     @Override public void setWidth(int width) {
         super.setWidth(width);
-        TextureManager.getInstance().getRenderer().resizeRenderTarget(this);
+        renderer.resizeRenderTarget(this);
     }
 
     @Override public void setHeight(int height) {
         super.setHeight(height);
-        TextureManager.getInstance().getRenderer().resizeRenderTarget(this);
+        renderer.resizeRenderTarget(this);
     }
 
     /**
@@ -99,7 +106,7 @@ public class RenderTargetTexture extends ATexture {
     public void resize(int width, int height) {
         mWidth = width;
         mHeight = height;
-        TextureManager.getInstance().getRenderer().resizeRenderTarget(this);
+        renderer.resizeRenderTarget(this);
     }
 
     public void setFrom(RenderTargetTexture other) {

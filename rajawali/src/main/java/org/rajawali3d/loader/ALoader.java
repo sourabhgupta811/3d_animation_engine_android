@@ -52,12 +52,14 @@ public abstract class ALoader implements ILoader {
 	public ALoader(Renderer renderer, String fileOnSDCard)
 	{
 		this(renderer.getContext().getResources(), 0);
+		this.renderer = renderer;
 		mFileOnSDCard = fileOnSDCard;
 	}
 
 	public ALoader(Renderer renderer, int resourceId)
 	{
 		this(renderer.getContext().getResources(), resourceId);
+		this.renderer = renderer;
 	}
 
 	public ALoader(Resources resources, int resourceId)
@@ -65,9 +67,10 @@ public abstract class ALoader implements ILoader {
 		mResources = resources;
 		mResourceId = resourceId;
 	}
-
+	public Renderer renderer;
 	public ALoader(Renderer renderer, File file) {
 		this(renderer.getContext().getResources(), 0);
+		this.renderer = renderer;
 		mFile = file;
 	}
 

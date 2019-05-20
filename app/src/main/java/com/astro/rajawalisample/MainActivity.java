@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.astro.rajawalisample.R;
 
+import org.rajawali3d.materials.RajawaliContext;
+
 
 /**
  * Created by Sourabh Gupta on 14/5/19.
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
+        RajawaliContext.getInstance().setContext(this);
         getSupportFragmentManager().beginTransaction().add(R.id.frame_view4, AnimationFragment.newInstance("name3")).commit();
 
         new Handler().postDelayed(new Runnable() {

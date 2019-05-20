@@ -921,14 +921,14 @@ public class Material {
      * @param texture
      * @throws TextureException
      */
-    public void addTexture(ATexture texture) throws TextureException {
+    public void addTexture(ATexture texture,Renderer render) throws TextureException {
         if (mTextureList.indexOf(texture) > -1) return;
         if (mTextureList.size() + 1 > mMaxTextures) {
             throw new TextureException("Maximum number of textures for this material has been reached. Maximum number of textures is " + mMaxTextures + ".");
         }
         mTextureList.add(texture);
 
-        TextureManager.getInstance().addTexture(texture);
+        render.getTextureManager().addTexture(texture);
         texture.registerMaterial(this);
 
         mIsDirty = true;
@@ -959,11 +959,11 @@ public class Material {
      * @param material
      * @throws TextureException
      */
-    public void copyTexturesTo(Material material) throws TextureException {
+    public void copyTexturesTo(Material material,Renderer renderer) throws TextureException {
         int num = mTextureList.size();
 
         for (int i = 0; i < num; ++i)
-            material.addTexture(mTextureList.get(i));
+            material.addTexture(mTextureList.get(i),renderer);
     }
 
     /**

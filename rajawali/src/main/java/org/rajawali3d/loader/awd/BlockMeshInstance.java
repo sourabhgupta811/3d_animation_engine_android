@@ -69,7 +69,7 @@ public class BlockMeshInstance extends AExportableBlockParser {
 			final long materialID = dis.readUnsignedInt();
 			if (materialID == 0) {
 				materials[i] = getDefaultMaterial();
-				materials[i].addTexture(getDefaultTexture());
+				materials[i].addTexture(getDefaultTexture(),blockHeader.renderer);
 			} else {
 				final BlockHeader materialHeader = blockHeader.blockHeaders.get((short) materialID);
 				if (materialHeader == null || materialHeader.parser == null

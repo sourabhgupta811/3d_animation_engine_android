@@ -205,9 +205,9 @@ public abstract class SideBySideRenderer extends Renderer {
 
 		mViewportWidthHalf = (int) (mDefaultViewportWidth * .5f);
 
-		mLeftRenderTarget = new RenderTarget("sbsLeftRT", mViewportWidthHalf, mDefaultViewportHeight);
+		mLeftRenderTarget = new RenderTarget("sbsLeftRT", mViewportWidthHalf, mDefaultViewportHeight,this);
 		mLeftRenderTarget.setFullscreen(false);
-		mRightRenderTarget = new RenderTarget("sbsRightRT", mViewportWidthHalf, mDefaultViewportHeight);
+		mRightRenderTarget = new RenderTarget("sbsRightRT", mViewportWidthHalf, mDefaultViewportHeight,this);
 		mRightRenderTarget.setFullscreen(false);
 
 		mCameraLeft.setProjectionMatrix(mViewportWidthHalf, mDefaultViewportHeight);
@@ -217,8 +217,8 @@ public abstract class SideBySideRenderer extends Renderer {
 		addRenderTarget(mRightRenderTarget);
 
 		try {
-			mLeftQuadMaterial.addTexture(mLeftRenderTarget.getTexture());
-			mRightQuadMaterial.addTexture(mRightRenderTarget.getTexture());
+			mLeftQuadMaterial.addTexture(mLeftRenderTarget.getTexture(),this);
+			mRightQuadMaterial.addTexture(mRightRenderTarget.getTexture(),this);
 		} catch (TextureException e) {
 			e.printStackTrace();
 		}

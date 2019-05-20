@@ -19,20 +19,20 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MaterialManager extends AResourceManager {
-	private static MaterialManager instance = null;
+	private MaterialManager instance = null;
 	private List<Material> mMaterialList;
 
-	private MaterialManager() {
+	public MaterialManager() {
 		mMaterialList = Collections.synchronizedList(new CopyOnWriteArrayList<Material>());
 		mRenderers = Collections.synchronizedList(new CopyOnWriteArrayList<Renderer>());
 	}
 
-	public static MaterialManager getInstance() {
-		if(instance == null) {
-			instance = new MaterialManager();
-		}
-		return instance;
-	}
+//	public static MaterialManager getInstance() {
+//		if(instance == null) {
+//			instance = new MaterialManager();
+//		}
+//		return instance;
+//	}
 
 	public Material addMaterial(Material material) {
 		if(material == null) return null;

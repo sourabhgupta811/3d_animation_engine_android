@@ -27,12 +27,12 @@ public class RenderTargetCube extends RenderTarget {
 	
 	public RenderTargetCube(String name, int width, int height, int offsetX, int offsetY,
 			boolean stencilBuffer, boolean mipmaps, int glType, Config bitmapConfig, FilterType filterType,
-			WrapType wrapType) {
-		super(name, width, height, offsetX, offsetY, stencilBuffer, mipmaps, glType, bitmapConfig, filterType, wrapType);
+			WrapType wrapType,Renderer renderer) {
+		super(name, width, height, offsetX, offsetY, stencilBuffer, mipmaps, glType, bitmapConfig, filterType, wrapType,renderer);
 	}
 
-	public RenderTargetCube(String name, int width, int height) {
-		super(name, width, height);
+	public RenderTargetCube(String name, int width, int height,Renderer renderer) {
+		super(name, width, height,renderer);
 	}
 	
 	/**

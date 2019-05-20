@@ -101,10 +101,10 @@ public class PipRenderer extends Renderer {
         mMiniQuad.setMaterial(mMiniQuadMaterial);
 
         mMainRenderTarget =
-                new RenderTarget("pipMainRT", mDefaultViewportWidth, mDefaultViewportHeight);
+                new RenderTarget("pipMainRT", mDefaultViewportWidth, mDefaultViewportHeight,this);
         mMainRenderTarget.setFullscreen(false);
         mMiniRenderTarget =
-                new RenderTarget("pipMiniRT", mDefaultViewportWidth, mDefaultViewportHeight);
+                new RenderTarget("pipMiniRT", mDefaultViewportWidth, mDefaultViewportHeight,this);
         mMiniRenderTarget.setFullscreen(false);
 
         addRenderTarget(mMainRenderTarget);
@@ -115,8 +115,8 @@ public class PipRenderer extends Renderer {
         mCompositeScene.addChild(mMiniQuad);
 
         try {
-            mMiniQuadMaterial.addTexture(mMiniRenderTarget.getTexture());
-            mMainQuadMaterial.addTexture(mMainRenderTarget.getTexture());
+            mMiniQuadMaterial.addTexture(mMiniRenderTarget.getTexture(),this);
+            mMainQuadMaterial.addTexture(mMainRenderTarget.getTexture(),this);
         } catch (ATexture.TextureException e) {
             e.printStackTrace();
         }

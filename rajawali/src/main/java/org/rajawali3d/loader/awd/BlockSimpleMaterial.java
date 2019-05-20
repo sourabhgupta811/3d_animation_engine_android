@@ -173,10 +173,10 @@ public class BlockSimpleMaterial extends ATextureBlockParser {
 				throw new ParsingException("Texture ID can not be 0, document corrupt or unsupported version.");
 
 			if(diffuseTexture > 0)
-				mMaterial.addTexture(new Texture(cleanName + diffuseTexture, lookup(blockHeader, diffuseTexture)));
+				mMaterial.addTexture(new Texture(cleanName + diffuseTexture, lookup(blockHeader, diffuseTexture)),blockHeader.renderer);
 
 			if(ambientTexture > 0)
-				mMaterial.addTexture(new Texture(cleanName + ambientTexture, lookup(blockHeader, ambientTexture)));
+				mMaterial.addTexture(new Texture(cleanName + ambientTexture, lookup(blockHeader, ambientTexture)),blockHeader.renderer);
 
 			mMaterial.setColorInfluence(0);
 
@@ -198,10 +198,10 @@ public class BlockSimpleMaterial extends ATextureBlockParser {
 		double specularLevel = (Double) properties.get(PROP_SPECULAR_LEVEL, 1.0d);
 
 		if(specularTexture > 0)
-			mMaterial.addTexture(new SpecularMapTexture(cleanName + specularTexture, lookup(blockHeader, specularTexture)));
+			mMaterial.addTexture(new SpecularMapTexture(cleanName + specularTexture, lookup(blockHeader, specularTexture)),blockHeader.renderer);
 
 		if(normalTexture > 0)
-			mMaterial.addTexture(new NormalMapTexture(cleanName + normalTexture, lookup(blockHeader, normalTexture)));
+			mMaterial.addTexture(new NormalMapTexture(cleanName + normalTexture, lookup(blockHeader, normalTexture)),blockHeader.renderer);
 
 		// ambient 1.0 is default, washes-out object; assume < 1 is intended
 		ambientLevel = (ambientLevel < 1.0 ? ambientLevel : 0.0);

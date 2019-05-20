@@ -70,7 +70,7 @@ public abstract class APass implements IPass {
 
 	public void setMaterial(Material material) {
 		mMaterial = material;
-		MaterialManager.getInstance().addMaterial(material);
+//		MaterialManager.getInstance().addMaterial(material);
 	}
 
 	public void setRenderToScreen(boolean renderToScreen) {

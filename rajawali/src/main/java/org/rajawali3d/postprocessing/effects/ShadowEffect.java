@@ -42,7 +42,7 @@ public class ShadowEffect extends APostProcessingEffect {
 	public void initialize(Renderer renderer) {
 		mShadowRenderTarget = new RenderTarget("shadowRT" + hashCode(), mShadowMapSize, mShadowMapSize, 0, 0,
 				false, false, GLES20.GL_TEXTURE_2D, Config.ARGB_8888,
-				FilterType.LINEAR, WrapType.CLAMP);
+				FilterType.LINEAR, WrapType.CLAMP,renderer);
 		renderer.addRenderTarget(mShadowRenderTarget);
 
 		ShadowPass pass1 = new ShadowPass(ShadowPassType.CREATE_SHADOW_MAP, mScene, mCamera, mLight, mShadowRenderTarget);

@@ -33,7 +33,7 @@ public class CopyToNewRenderTargetPass extends EffectPass {
         mNeedsSwap = false;
         mRenderTarget = new RenderTarget(name, width, height, 0, 0,
                 false, false, GLES20.GL_TEXTURE_2D, Config.ARGB_8888,
-                FilterType.LINEAR, WrapType.CLAMP);
+                FilterType.LINEAR, WrapType.CLAMP,renderer);
         renderer.addRenderTarget(mRenderTarget);
 
         createMaterial(R.raw.minimal_vertex_shader, R.raw.copy_fragment_shader);

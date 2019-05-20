@@ -51,11 +51,11 @@ public class ObjectColorPicker implements IObjectPicker {
 
 		mRenderTarget = new RenderTarget("colorPickerTarget", size, size,
 				0, 0, false, false, GLES20.GL_TEXTURE_2D, Config.ARGB_8888,
-				FilterType.LINEAR, WrapType.CLAMP);
+				FilterType.LINEAR, WrapType.CLAMP,mRenderer);
 		mRenderer.addRenderTarget(mRenderTarget);
 
 		mPickerMaterial = new Material();
-		MaterialManager.getInstance().addMaterial(mPickerMaterial);
+		mRenderer.getMaterialManager().addMaterial(mPickerMaterial);
 	}
 
 	public void setOnObjectPickedListener(OnObjectPickedListener objectPickedListener) {

@@ -39,7 +39,7 @@ public final class TextureManager extends AResourceManager {
 	/**
 	 * Stores the singleton instance
 	 */
-	private static TextureManager instance = null;
+	private TextureManager instance = null;
 	/**
 	 * A list of managed textures
 	 */
@@ -48,7 +48,7 @@ public final class TextureManager extends AResourceManager {
 	/**
 	 * The constructor can only be instantiated by the TextureManager class itself.
 	 */
-	private TextureManager()
+	public TextureManager()
 	{
 		mTextureList = Collections.synchronizedList(new CopyOnWriteArrayList<ATexture>());
 		mRenderers = Collections.synchronizedList(new CopyOnWriteArrayList<Renderer>());
@@ -58,14 +58,14 @@ public final class TextureManager extends AResourceManager {
 	 *
 	 * @return The TextureManager instance
 	 */
-	public static synchronized TextureManager getInstance()
-	{
-		if (instance == null)
-		{
-			instance = new TextureManager();
-		}
-		return instance;
-	}
+//	public static synchronized TextureManager getInstance()
+//	{
+//		if (instance == null)
+//		{
+//			instance = new TextureManager();
+//		}
+//		return instance;
+//	}
 
 	/**
 	 * Adds a new {@link ATexture} to the TextureManager. If a texture by the same name already exists that is not

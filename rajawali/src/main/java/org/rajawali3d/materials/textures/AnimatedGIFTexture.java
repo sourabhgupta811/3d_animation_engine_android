@@ -20,6 +20,9 @@ import android.graphics.Canvas;
 import android.graphics.Movie;
 import android.os.SystemClock;
 
+import org.rajawali3d.materials.RajawaliContext;
+import org.rajawali3d.renderer.Renderer;
+
 
 /**
  * Creates a texture from an animated GIF.
@@ -37,7 +40,12 @@ public class AnimatedGIFTexture extends ASingleTexture {
 	private int mTextureSize;
 	private long mStartTime;
 	private boolean mLoadNewGIF;
-	
+	private Renderer renderer;
+
+	public void setRenderer(Renderer renderer) {
+		this.renderer = renderer;
+	}
+
 	public AnimatedGIFTexture(String name, int resourceId) {
 		this(name, resourceId, 512);
 	}
@@ -66,7 +74,7 @@ public class AnimatedGIFTexture extends ASingleTexture {
 	}
 	
 	private void loadGIF() {
-		Context context = TextureManager.getInstance().getContext();
+		Context context = RajawaliContext.getInstance().getContext();
 		mMovie = Movie.decodeStream(context.getResources().openRawResource(mResourceId));
 		mWidth = mMovie.width();
 		mHeight = mMovie.height();
@@ -118,7 +126,7 @@ public class AnimatedGIFTexture extends ASingleTexture {
 		mGIFBitmap.eraseColor(Color.TRANSPARENT);
 		mMovie.draw(mCanvas, 0, 0);
 		mBitmap = Bitmap.createScaledBitmap(mGIFBitmap, mTextureSize, mTextureSize, false);
-		TextureManager.getInstance().replaceTexture(this);
+		renderer.getTextureManager().replaceTexture(this);
 		replace();
 	}
 	

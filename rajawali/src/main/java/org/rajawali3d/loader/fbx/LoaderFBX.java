@@ -462,7 +462,7 @@ public class LoaderFBX extends AMeshLoader {
 						}
 					}
 					o.getMaterial().setColorInfluence(0);
-					o.getMaterial().addTexture(new Texture(textureName.replaceAll("[\\W]|_", ""), bitmap));
+					o.getMaterial().addTexture(new Texture(textureName.replaceAll("[\\W]|_", ""), bitmap),renderer);
 					return;
 				}
 			}

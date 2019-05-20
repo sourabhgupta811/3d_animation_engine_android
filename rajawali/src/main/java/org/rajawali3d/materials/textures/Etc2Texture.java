@@ -8,6 +8,8 @@ import android.opengl.ETC1;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES30;
 import android.os.Build.VERSION_CODES;
+
+import org.rajawali3d.materials.RajawaliContext;
 import org.rajawali3d.materials.textures.utils.ETC2Util;
 import org.rajawali3d.util.RajLog;
 
@@ -50,13 +52,13 @@ public class Etc2Texture extends ACompressedTexture {
     }
 
     public Etc2Texture(int resourceId) {
-        this(TextureManager.getInstance().getContext().getResources().getResourceName(resourceId));
+        this(RajawaliContext.getInstance().getContext().getResources().getResourceName(resourceId));
         setResourceId(resourceId);
     }
 
     public Etc2Texture(String textureName, int resourceId, Bitmap fallbackTexture) {
         this(textureName);
-        Context context = TextureManager.getInstance().getContext();
+        Context context = RajawaliContext.getInstance().getContext();
         setInputStream(context.getResources().openRawResource(resourceId), fallbackTexture);
     }
 
@@ -112,7 +114,7 @@ public class Etc2Texture extends ACompressedTexture {
 
     public void setResourceId(int resourceId) {
         mResourceId = resourceId;
-        Resources resources = TextureManager.getInstance().getContext().getResources();
+        Resources resources = RajawaliContext.getInstance().getContext().getResources();
         try {
             ETC2Util.ETC2Texture texture = ETC2Util.createTexture(resources.openRawResource(resourceId));
             mByteBuffers = new ByteBuffer[]{texture.getData()};
@@ -131,7 +133,7 @@ public class Etc2Texture extends ACompressedTexture {
 
     public void setResourceIds(int[] resourceIds) {
         ByteBuffer[] mipmapChain = new ByteBuffer[resourceIds.length];
-        Resources resources = TextureManager.getInstance().getContext().getResources();
+        Resources resources = RajawaliContext.getInstance().getContext().getResources();
         int mip_0_width = 1, mip_0_height = 1;
         try {
             for (int i = 0, length = resourceIds.length; i < length; i++) {

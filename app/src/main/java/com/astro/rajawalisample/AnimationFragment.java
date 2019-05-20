@@ -102,7 +102,7 @@ public class AnimationFragment extends Fragment {
 //                material.enableLighting(true);
 //                material.setDiffuseMethod(new DiffuseMethod.Toon());
                 try {
-                    material.addTexture(new Texture("abc", R.drawable.animation_image));
+                    material.addTexture(new Texture("abc", R.drawable.animation_image),this);
                 }catch (Exception e){}
                 monkey.setMaterial(material);
                 monkey.setColor(0xffff8C00);

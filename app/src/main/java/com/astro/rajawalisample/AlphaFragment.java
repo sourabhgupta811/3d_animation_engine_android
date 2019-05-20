@@ -189,14 +189,14 @@ public class AlphaFragment extends Fragment {
                 roadMaterial.enableLighting(true);
                 roadMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
 
-                roadMaterial.addTexture(roadTex);
+                roadMaterial.addTexture(roadTex,this);
                 roadMaterial.setColorInfluence(0);
                 mRoad.getChildByName("Road").setMaterial(roadMaterial);
 
                 Material signMaterial = new Material();
                 signMaterial.enableLighting(true);
                 signMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-                signMaterial.addTexture(rajawaliSign);
+                signMaterial.addTexture(rajawaliSign,this);
 
                 signMaterial.setColorInfluence(0);
                 mRoad.getChildByName("WarningSign").setMaterial(signMaterial);
@@ -204,7 +204,7 @@ public class AlphaFragment extends Fragment {
                 Material warningMaterial = new Material();
                 warningMaterial.enableLighting(true);
                 warningMaterial.setDiffuseMethod(new DiffuseMethod.Lambert());
-                warningMaterial.addTexture(warning);
+                warningMaterial.addTexture(warning,this);
                 warningMaterial.setColorInfluence(0);
                 mRoad.getChildByName("Warning").setMaterial(warningMaterial);
             } catch (Exception e) {

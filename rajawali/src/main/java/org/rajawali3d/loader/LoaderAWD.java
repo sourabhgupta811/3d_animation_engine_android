@@ -284,6 +284,7 @@ public class LoaderAWD extends AMeshLoader {
 
                     // Begin parsing
                     try {
+                        blockHeader.setRenderer(renderer);
                         parser.parseBlock(dis, blockHeader);
                     } catch (NotImplementedParsingException e) {
                         if (RajLog.isDebugEnabled())
@@ -456,6 +457,12 @@ public class LoaderAWD extends AMeshLoader {
         public boolean globalPrecisionGeo;
         public boolean globalPrecisionMatrix;
         public boolean globalPrecisionProps;
+
+        public Renderer renderer;
+
+        public void setRenderer(Renderer renderer) {
+            this.renderer = renderer;
+        }
 
         @Override
         public String toString() {

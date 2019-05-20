@@ -8,17 +8,19 @@ import org.rajawali3d.materials.shaders.IShaderFragment;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.materials.textures.TextureManager;
+import org.rajawali3d.renderer.RenderTarget;
+import org.rajawali3d.renderer.Renderer;
 
 
 public class DecalMaterialPlugin implements IMaterialPlugin {
     private final static String U_DECAL_TEXTURE = "uDecalTexture";
     private final static String U_DECAL_OFFSET = "uDecalOffset";
     private final static String U_DECAL_REPEAT = "uDecalRepeat";
-
+    private Renderer renderer;
     private DecalFragmentShaderFragment mFragmentShader;
 
     public DecalMaterialPlugin(Texture decalMap) {
-        TextureManager.getInstance().addTexture(decalMap);
+        renderer.getTextureManager().addTexture(decalMap);
         mFragmentShader = new DecalFragmentShaderFragment();
         mFragmentShader.setDecalMapTexture(decalMap);
     }

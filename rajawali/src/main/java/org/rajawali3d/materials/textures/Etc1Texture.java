@@ -18,6 +18,7 @@ import android.graphics.Bitmap;
 import android.opengl.ETC1;
 import android.opengl.ETC1Util;
 
+import org.rajawali3d.materials.RajawaliContext;
 import org.rajawali3d.util.RajLog;
 
 import java.io.IOException;
@@ -38,13 +39,13 @@ public class Etc1Texture extends ACompressedTexture {
     }
 
     public Etc1Texture(int resourceId) {
-        this(TextureManager.getInstance().getContext().getResources().getResourceName(resourceId));
+        this(RajawaliContext.getInstance().getContext().getResources().getResourceName(resourceId));
         setResourceId(resourceId);
     }
 
     public Etc1Texture(String textureName, int resourceId, Bitmap fallbackTexture) {
         this(textureName);
-        Context context = TextureManager.getInstance().getContext();
+        Context context = RajawaliContext.getInstance().getContext();
         setInputStream(context.getResources().openRawResource(resourceId), fallbackTexture);
     }
 
@@ -81,7 +82,7 @@ public class Etc1Texture extends ACompressedTexture {
     @Override
     protected void add() throws TextureException {
         if(mResourceId != -1) {
-            Resources resources = TextureManager.getInstance().getContext().getResources();
+            Resources resources = RajawaliContext.getInstance().getContext().getResources();
             try {
                 ETC1Util.ETC1Texture texture = ETC1Util.createTexture(resources.openRawResource(mResourceId));
                 mByteBuffers = new ByteBuffer[]{texture.getData()};
@@ -94,7 +95,7 @@ public class Etc1Texture extends ACompressedTexture {
             }
         } else if(mResourceIds != null) {
             ByteBuffer[] mipmapChain = new ByteBuffer[mResourceIds.length];
-            Resources resources = TextureManager.getInstance().getContext().getResources();
+            Resources resources = RajawaliContext.getInstance().getContext().getResources();
             int mip_0_width = 1, mip_0_height = 1;
             try {
                 for (int i = 0, length = mResourceIds.length; i < length; i++) {

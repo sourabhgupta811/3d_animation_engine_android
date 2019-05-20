@@ -846,7 +846,7 @@ public class Scene {
 		Texture texture = new Texture("skybox", resourceId);
 		Material material = new Material();
 		material.setColorInfluence(0);
-		material.addTexture(texture);
+		material.addTexture(texture,mRenderer);
 		skybox.setMaterial(material);
         	return setSkybox(skybox, texture);
 	}
@@ -869,7 +869,7 @@ public class Scene {
 		texture.isSkyTexture(true);
 		Material mat = new Material();
 		mat.setColorInfluence(0);
-		mat.addTexture(texture);
+		mat.addTexture(texture,mRenderer);
 		skybox.setMaterial(mat);
         	return setSkybox(skybox, texture);
 	}
@@ -885,7 +885,7 @@ public class Scene {
         texture.isSkyTexture(true);
         final Material material = new Material();
         material.setColorInfluence(0);
-        material.addTexture(texture);
+        material.addTexture(texture,mRenderer);
         skybox.setMaterial(material);
         return setSkybox(skybox, texture);
     }

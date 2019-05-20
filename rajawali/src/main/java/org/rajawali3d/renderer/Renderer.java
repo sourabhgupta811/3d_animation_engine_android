@@ -165,6 +165,9 @@ public abstract class Renderer implements ISurfaceRenderer {
         this(context, false);
     }
 
+    private TextureManager textureManager = new TextureManager();
+    private MaterialManager materialManager = new MaterialManager();
+
     public Renderer(Context context, boolean registerForResources) {
         RajLog.i("Rajawali | Bombshell | v1.1.970 Release ");
         RajLog.i("This is a stable release.");
@@ -190,11 +193,11 @@ public abstract class Renderer implements ISurfaceRenderer {
         clearOverrideViewportDimensions();
 
         // Make sure we have a texture manager
-        mTextureManager = TextureManager.getInstance();
+        mTextureManager = textureManager;
         mTextureManager.setContext(getContext());
 
         // Make sure we have a material manager
-        mMaterialManager = MaterialManager.getInstance();
+        mMaterialManager = materialManager;
         mMaterialManager.setContext(getContext());
 
         // We are registering now
@@ -210,6 +213,10 @@ public abstract class Renderer implements ISurfaceRenderer {
 
     public TextureManager getTextureManager() {
         return mTextureManager;
+    }
+
+    public MaterialManager getMaterialManager() {
+        return materialManager;
     }
 
     @Override

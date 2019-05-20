@@ -25,6 +25,7 @@ import org.rajawali3d.materials.textures.TexturePacker.Tile;
 import org.rajawali3d.math.Matrix;
 import org.rajawali3d.math.Matrix4;
 import org.rajawali3d.math.vector.Vector3;
+import org.rajawali3d.renderer.Renderer;
 import org.rajawali3d.util.GLU;
 import org.rajawali3d.util.RajLog;
 import org.rajawali3d.visitors.INode;
@@ -753,7 +754,7 @@ public class Object3D extends ATransformable3D implements Comparable<Object3D>, 
         if (material == null) {
             return;
         }
-        MaterialManager.getInstance().addMaterial(material);
+//        MaterialManager.getInstance().addMaterial(material);
         mMaterial = material;
     }
 

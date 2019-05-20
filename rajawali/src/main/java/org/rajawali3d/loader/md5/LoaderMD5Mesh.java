@@ -450,7 +450,7 @@ public class LoaderMD5Mesh extends AMeshLoader implements IAnimatedMeshLoader {
 					throw new ParsingException("Couldn't find texture " + mesh.textureName);
 				}
 				mat.setColorInfluence(0);
-				mat.addTexture(new Texture("md5tex" + i, identifier));
+				mat.addTexture(new Texture("md5tex" + i, identifier),renderer);
 			}
 			mRootObject.addChild(o);
 

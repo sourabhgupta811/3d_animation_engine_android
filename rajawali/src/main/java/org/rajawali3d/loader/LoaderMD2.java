@@ -123,7 +123,7 @@ public class LoaderMD2 extends AMeshLoader implements IAnimatedMeshLoader {
 			mObject.setColor(0xffffffff);
 			if (mTexture != null)
 			{
-				material.addTexture(new Texture(mCurrentTextureName, mTexture));
+				material.addTexture(new Texture(mCurrentTextureName, mTexture),renderer);
 				material.setColorInfluence(0);
 			}
 			stream.close();

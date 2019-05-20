@@ -604,9 +604,9 @@ public class LoaderOBJ extends AMeshLoader {
 					int id = mResources.getIdentifier(fileNameWithoutExtension, "drawable", mResourcePackage);
 					int etc1Id = mResources.getIdentifier(fileNameWithoutExtension, "raw", mResourcePackage);
 					if(etc1Id!=0) {
-						mat.addTexture(new Texture(object.getName()+fileNameWithoutExtension, new Etc1Texture(object.getName()+etc1Id, etc1Id, id!=0 ? BitmapFactory.decodeResource(mResources, id) : null)));
+						mat.addTexture(new Texture(object.getName()+fileNameWithoutExtension, new Etc1Texture(object.getName()+etc1Id, etc1Id, id!=0 ? BitmapFactory.decodeResource(mResources, id) : null)),renderer);
 					} else if(id!=0) {
-						mat.addTexture(new Texture(object.getName()+fileNameWithoutExtension, id));
+						mat.addTexture(new Texture(object.getName()+fileNameWithoutExtension, id),renderer);
 					}
 				} else {
 					String filePath = mFile.getParent() + File.separatorChar + getOnlyFileName(matDef.diffuseTexture);
@@ -615,7 +615,7 @@ public class LoaderOBJ extends AMeshLoader {
 						try {
 							fis = new FileInputStream(filePath);
 							mat.addTexture(new Texture(getFileNameWithoutExtension(matDef.diffuseTexture),
-													   new Etc1Texture(getFileNameWithoutExtension(matDef.diffuseTexture)+"etc1", fis, null)));
+													   new Etc1Texture(getFileNameWithoutExtension(matDef.diffuseTexture)+"etc1", fis, null)),renderer);
 						} catch (FileNotFoundException e) {
 							RajLog.e("File decode error");
 						} finally {
@@ -624,7 +624,7 @@ public class LoaderOBJ extends AMeshLoader {
 							} catch (IOException e) {}
 						}
 					} else {
-						mat.addTexture(new Texture(getFileNameWithoutExtension(matDef.diffuseTexture), BitmapFactory.decodeFile(filePath)));
+						mat.addTexture(new Texture(getFileNameWithoutExtension(matDef.diffuseTexture), BitmapFactory.decodeFile(filePath)),renderer);
 					}
 				}
 				mat.setColorInfluence(0);
@@ -632,19 +632,19 @@ public class LoaderOBJ extends AMeshLoader {
 			if(hasBump) {
 				if(mFile == null) {
 					int identifier = mResources.getIdentifier(getFileNameWithoutExtension(matDef.bumpTexture), "drawable", mResourcePackage);
-					mat.addTexture(new NormalMapTexture(object.getName() + identifier, identifier));
+					mat.addTexture(new NormalMapTexture(object.getName() + identifier, identifier),renderer);
 				} else {
 					String filePath = mFile.getParent() + File.separatorChar + getOnlyFileName(matDef.bumpTexture);
-					mat.addTexture(new NormalMapTexture(getOnlyFileName(matDef.bumpTexture), BitmapFactory.decodeFile(filePath)));
+					mat.addTexture(new NormalMapTexture(getOnlyFileName(matDef.bumpTexture), BitmapFactory.decodeFile(filePath)),renderer);
 				}
 			}
 			if(hasSpecularTexture) {
 				if(mFile == null) {
 					int identifier = mResources.getIdentifier(getFileNameWithoutExtension(matDef.specularColorTexture), "drawable", mResourcePackage);
-					mat.addTexture(new SpecularMapTexture(object.getName() + identifier, identifier));
+					mat.addTexture(new SpecularMapTexture(object.getName() + identifier, identifier),renderer);
 				} else {
 					String filePath = mFile.getParent() + File.separatorChar + getOnlyFileName(matDef.specularColorTexture);
-					mat.addTexture(new SpecularMapTexture(getOnlyFileName(matDef.specularColorTexture), BitmapFactory.decodeFile(filePath)));
+					mat.addTexture(new SpecularMapTexture(getOnlyFileName(matDef.specularColorTexture), BitmapFactory.decodeFile(filePath)),renderer);
 				}
 			}
 			object.setMaterial(mat);

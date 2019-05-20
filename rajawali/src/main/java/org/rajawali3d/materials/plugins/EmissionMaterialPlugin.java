@@ -9,13 +9,19 @@ import org.rajawali3d.materials.shaders.IShaderFragment;
 import org.rajawali3d.materials.textures.ATexture;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.materials.textures.TextureManager;
+import org.rajawali3d.renderer.Renderer;
 
 public class EmissionMaterialPlugin implements IMaterialPlugin {
     private final static String U_EMISSION_TEXTURE = "uEmissionTexture";
     private EmissionShaderFragment mFragmentShader;
+    private Renderer renderer;
+
+    public void setRenderer(Renderer renderer) {
+        this.renderer = renderer;
+    }
 
     public EmissionMaterialPlugin(Texture emissionTexture) {
-        TextureManager.getInstance().addTexture(emissionTexture);
+        renderer.getTextureManager().addTexture(emissionTexture);
         mFragmentShader = new EmissionShaderFragment();
         mFragmentShader.setEmissionTexture(emissionTexture);
     }

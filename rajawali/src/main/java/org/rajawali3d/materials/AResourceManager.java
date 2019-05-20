@@ -39,18 +39,18 @@ public abstract class AResourceManager {
 	 */
 	public void registerRenderer(Renderer renderer)
 	{
-        boolean alreadyRegistered = false;
+//        boolean alreadyRegistered = false;
 
-        for (int i=0;i<mRenderers.size();i++) {
-            if (renderer == mRenderers.get(i)) {
-                alreadyRegistered = true;
-                break;
-            }
-        }
-
-        if (!alreadyRegistered) {
-            mRenderers.add(renderer);
-        }
+//        for (int i=0;i<mRenderers.size();i++) {
+//            if (renderer == mRenderers.get(i)) {
+//                alreadyRegistered = true;
+//                break;
+//            }
+//        }
+//
+//        if (!alreadyRegistered) {
+//            mRenderers.add(renderer);
+//        }
 
 		mRenderer = renderer;
 	}
@@ -62,7 +62,7 @@ public abstract class AResourceManager {
 	 */
 	public void unregisterRenderer(Renderer renderer)
 	{
-		mRenderers.remove(renderer);
+//		mRenderers.remove(renderer);
 	}
 
 	/**

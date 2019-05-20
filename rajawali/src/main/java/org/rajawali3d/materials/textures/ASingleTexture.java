@@ -19,6 +19,8 @@ import android.graphics.BitmapFactory;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 
+import org.rajawali3d.materials.RajawaliContext;
+
 import java.nio.ByteBuffer;
 
 /**
@@ -45,7 +47,7 @@ public abstract class ASingleTexture extends ATexture
 
 	public ASingleTexture(TextureType textureType, int resourceId)
 	{
-		this(textureType, TextureManager.getInstance().getContext().getResources().getResourceName(resourceId));
+		this(textureType, RajawaliContext.getInstance().getContext().getResources().getResourceName(resourceId));
 		setResourceId(resourceId);
 	}
 
@@ -86,7 +88,7 @@ public abstract class ASingleTexture extends ATexture
 
 	public void setResourceId(int resourceId) {
 		mResourceId = resourceId;
-		Context context = TextureManager.getInstance().getContext();
+		Context context = RajawaliContext.getInstance().getContext();
 		BitmapFactory.Options bitmapScalingOptions = new BitmapFactory.Options();
 		bitmapScalingOptions.inScaled = false;
 		setBitmap(BitmapFactory.decodeResource(context.getResources(), resourceId, bitmapScalingOptions));

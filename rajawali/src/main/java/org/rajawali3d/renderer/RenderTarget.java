@@ -76,10 +76,11 @@ public class RenderTarget {
 	 * @param wrapType
 	 *            Texture wrap type
 	 */
+	public Renderer renderer;
 	public RenderTarget(String name, int width, int height, int offsetX, int offsetY,
 			boolean stencilBuffer, boolean mipmaps,
 			int glType, Config bitmapConfig, FilterType filterType,
-			WrapType wrapType) {
+			WrapType wrapType,Renderer renderer) {
 		mName = name;
 		mWidth = width;
 		mHeight = height;
@@ -98,7 +99,8 @@ public class RenderTarget {
 		mTexture.setBitmapConfig(mBitmapConfig);
 		mTexture.setFilterType(mFilterType);
 		mTexture.setWrapType(mWrapType);
-		TextureManager.getInstance().addTexture(mTexture);
+		renderer.getTextureManager().addTexture(mTexture);
+		this.renderer = renderer;
 	}
 
 
@@ -110,9 +112,9 @@ public class RenderTarget {
 	 * @param height
 	 *            Height of the render target
 	 */
-	public RenderTarget(String name, int width, int height) {
+	public RenderTarget(String name, int width, int height,Renderer renderer) {
 		this(name, width, height, 0, 0, false, false, GLES20.GL_TEXTURE_2D, Config.ARGB_8888, FilterType.LINEAR,
-				WrapType.CLAMP);
+				WrapType.CLAMP,renderer);
 	}
 
 	@Override
@@ -128,7 +130,8 @@ public class RenderTarget {
 				mTexture.getGLTextureType(),
 				mTexture.getBitmapConfig(),
 				mTexture.getFilterType(),
-				mTexture.getWrapType());
+				mTexture.getWrapType(),
+				renderer);
 	}
 
 	/**
@@ -253,7 +256,7 @@ public class RenderTarget {
 		checkGLError("Could not create framebuffer: ");
 		// -- add the texture directly. we can afford to do this because the create()
 		//    method is called in a thread safe manner.
-		TextureManager.getInstance().taskAdd(mTexture);
+		renderer.getTextureManager().taskAdd(mTexture);
 
 		GLES20.glFramebufferTexture2D(
 			      GLES20.GL_FRAMEBUFFER, GLES20.GL_COLOR_ATTACHMENT0, GLES20.GL_TEXTURE_2D, mTexture.getTextureId(), 0);
