@@ -110,7 +110,9 @@ public final class TextureManager extends AResourceManager {
 		}
 
 		try {
-			texture.add();
+			if(!mTextureList.contains(texture)) {
+				texture.add();
+			}
 		} catch (TextureException e) {
 			throw new RuntimeException(e);
 		}
@@ -259,9 +261,9 @@ public final class TextureManager extends AResourceManager {
 	 * @param renderer
 	 */
 	public void taskReset(Renderer renderer) {
-		if (mRenderers.size() == 0) {
+//		if (mRenderers.size() == 0) {
 			taskReset();
-		}
+//		}
 	}
 
 	public void taskResizeRenderTarget(RenderTargetTexture renderTargetTexture) {

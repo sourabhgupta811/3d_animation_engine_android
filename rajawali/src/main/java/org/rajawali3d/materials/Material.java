@@ -926,8 +926,9 @@ public class Material {
         if (mTextureList.size() + 1 > mMaxTextures) {
             throw new TextureException("Maximum number of textures for this material has been reached. Maximum number of textures is " + mMaxTextures + ".");
         }
-        mTextureList.add(texture);
-
+        if(!mTextureList.contains(texture)) {
+            mTextureList.add(texture);
+        }
         render.getTextureManager().addTexture(texture);
         texture.registerMaterial(this);
 
