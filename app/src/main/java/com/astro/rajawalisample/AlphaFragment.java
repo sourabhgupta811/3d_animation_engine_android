@@ -122,10 +122,6 @@ public class AlphaFragment extends Fragment {
     }
 
     private class OrthographicRenderer extends Renderer {
-        Texture roadTex;
-        Texture rajawaliSign;
-        Texture warning;
-
         public OrthographicRenderer(Context context) {
             super(context);
         }
@@ -165,9 +161,9 @@ public class AlphaFragment extends Fragment {
         protected void initScene() {
             mLight = new DirectionalLight(0, -1, -1);
             mLight.setPower(.5f);
-            rajawaliSign = new Texture("rajawaliSign", R.drawable.sign);
-            warning = new Texture("warning", R.drawable.warning);
-            roadTex = new Texture("roadTex", R.drawable.road);
+            Texture rajawaliSign = new Texture("rajawaliSign", R.drawable.sign);
+            Texture warning = new Texture("warning", R.drawable.warning);
+            Texture roadTex = new Texture("roadTex", R.drawable.road);
 
             getCurrentScene().addLight(mLight);
 
