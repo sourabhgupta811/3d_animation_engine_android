@@ -82,7 +82,7 @@ public class AlphaFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.animation_fragment, container, false);
         textureView2 = v.findViewById(R.id.texture_view2);
-        renderer = new OrthographicRenderer(getContext());
+        renderer = new PlaneRenderer(getContext());
         textureView2.setSurfaceRenderer(renderer);
         return v;
     }
@@ -225,6 +225,9 @@ public class AlphaFragment extends Fragment {
         }
     }
     private class PlaneRenderer extends Renderer{
+        private long mStartTime;
+        private Material mMaterial;
+        private PlanesGaloreMaterialPlugin mMaterialPlugin;
         @Override
         protected void initScene() {
             DirectionalLight light = new DirectionalLight(0, 0, 1);
@@ -236,7 +239,7 @@ public class AlphaFragment extends Fragment {
             mMaterial = planes.getMaterial();
             mMaterial.setColorInfluence(0);
             try {
-                mMaterial.addTexture(new Texture("flickrPics", R.drawable.flickrpics));
+                mMaterial.addTexture(new Texture("flickrPics", R.drawable.flickrpics),renderer);
             } catch (ATexture.TextureException e) {
                 e.printStackTrace();
             }

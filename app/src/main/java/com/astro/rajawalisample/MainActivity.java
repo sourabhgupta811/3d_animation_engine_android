@@ -27,27 +27,27 @@ public class MainActivity extends AppCompatActivity {
         fragment1 = AnimationFragment.newInstance("name3");
         getSupportFragmentManager().beginTransaction().add(R.id.frame_view4, fragment1).commit();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
                 fragment2 = AlphaFragment.newInstance("name1");
                 getSupportFragmentManager().beginTransaction().add(R.id.frame_view2, fragment2).commit();
-            }
-        }, 200);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//            }
+//        }, 200);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
                 fragment3 = AlphaFragment.newInstance("name1");
                 getSupportFragmentManager().beginTransaction().add(R.id.frame_view3, fragment3).commit();
-            }
-        }, 400);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+//            }
+//        }, 400);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
                 fragment4 = AlphaFragment.newInstance("name1");
                 getSupportFragmentManager().beginTransaction().add(R.id.frame_view, fragment4).commit();
-            }
-        }, 600);
+//            }
+//        }, 600);
     }
     boolean fragmentShowing = true;
     public void remove(View view) {
