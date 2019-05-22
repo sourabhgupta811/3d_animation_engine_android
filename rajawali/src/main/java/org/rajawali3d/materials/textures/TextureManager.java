@@ -43,7 +43,7 @@ public final class TextureManager extends AResourceManager {
 	/**
 	 * A list of managed textures
 	 */
-	private List<ATexture> mTextureList;
+	private static List<ATexture> mTextureList;
 
 	/**
 	 * The constructor can only be instantiated by the TextureManager class itself.

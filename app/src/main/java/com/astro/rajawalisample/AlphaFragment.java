@@ -82,7 +82,7 @@ public class AlphaFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.animation_fragment, container, false);
         textureView2 = v.findViewById(R.id.texture_view2);
-        renderer = new PlaneRenderer(getContext());
+        renderer = new PlaneRenderer(getContext(),getArguments().getString("name"));
         textureView2.setSurfaceRenderer(renderer);
         return v;
     }
@@ -286,7 +286,7 @@ public class AlphaFragment extends Fragment {
             mMaterial.setTime((System.currentTimeMillis() - mStartTime) / 1000f);
             mMaterialPlugin.setCameraPosition(getCurrentCamera().getPosition());
         }
-        public PlaneRenderer(Context context) {
+        public PlaneRenderer(Context context, String name) {
             super(context);
         }
 
