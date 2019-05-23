@@ -24,6 +24,7 @@ import org.rajawali3d.materials.methods.DiffuseMethod;
 import org.rajawali3d.materials.textures.Texture;
 import org.rajawali3d.math.vector.Vector3;
 import org.rajawali3d.primitives.Cube;
+import org.rajawali3d.primitives.Plane;
 import org.rajawali3d.renderer.Renderer;
 import org.rajawali3d.view.TextureView;
 
@@ -96,7 +97,9 @@ public class AnimationFragment extends Fragment {
             getCurrentCamera().setPosition(0, 0, 16);
 
             try {
-                Object3D monkey = new Cube(2.0f);
+                Plane monkey = new Plane();
+//                monkey.setMaterial();
+//                Object3D monkey = new Cube(2.0f);
                 Material material = new Material();
 //                material.setColorInfluence(0);
 //                material.enableLighting(true);
